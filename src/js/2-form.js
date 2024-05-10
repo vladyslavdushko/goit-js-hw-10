@@ -29,6 +29,18 @@ function storageCheck(){
     }
 }
 
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    
+
+    const keys = Object.keys(formData)
+    let keyCheck = keys.map(key => form.elements[key].value)
+
+    if(keyCheck.includes('')){
+        return alert("Fill please all fields")
+    } else{
+        console.log(formData );
+    }
     localStorage.removeItem(storageKey)
+    form.reset()
 })
