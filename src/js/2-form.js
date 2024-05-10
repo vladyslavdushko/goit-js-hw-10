@@ -39,7 +39,7 @@ form.addEventListener('submit', (event) => {
     if(keyCheck.includes('')){
         return alert("Fill please all fields")
     } else{
-        console.log(formData );
+        console.log(formData);
     }
     localStorage.removeItem(storageKey)
     form.reset()
