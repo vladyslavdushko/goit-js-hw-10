@@ -1,47 +1,37 @@
-const formData = {
-    email: "",
-    message: "" 
-}
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
-const form = document.querySelector("form")
-const storageKey = "feedback-form-state";
 
-storageCheck()
+const form = document.querySelector("form"); 
 
-form.addEventListener('input', (event) => {
+form.addEventListener('submit', submitResult)
+
+function submitResult(event){
     event.preventDefault()
-    const element = event.currentTarget.elements
+    const formElements = form.elements
 
-    formData.email = element.email.value
-    formData.message = element.message.value
+    const userInput = formElements.delay.value;
+    const radioBtn = formElements.state.value
+    console.log(radioBtn);
 
-    let strFormdata = JSON.stringify(formData);
-    localStorage.setItem(storageKey, strFormdata); 
-} )
+    new Promise ((response, reject) =>{
+        setTimeout(()=>{
+            if(radioBtn === 'fulfilled'){
 
-function storageCheck(){
-    const savedMessage = localStorage.getItem(storageKey);
+                iziToast.success({
+                    title: 'OK',
+                    message: `✅ Fulfilled promise in ${userInput}ms`
+                    ,
+                });
 
-    if(savedMessage){
-        const savedData = JSON.parse(savedMessage); 
-        form.elements.email.value = savedData.email; 
-        form.elements.message.value = savedData.message;
-    }
+            } else if(radioBtn === 'rejected') {
+                iziToast.error({
+                    title: 'Error',
+                    message: `❌ Rejected promise in ${userInput}ms`
+                    ,
+                });
+            }
+        }, +userInput)
+
+    })
 }
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault()
-    
-
-    const keys = Object.keys(formData)
-    let keyCheck = keys.map(key => form.elements[key].value)
-
-    if(keyCheck.includes('')){
-        return alert("Fill please all fields")
-    } else{
-        localStorage.removeItem(storageKey)
-        form.reset()
-        return console.log(formData);
-    }
-
-})
