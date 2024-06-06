@@ -2,19 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/goit-js-hw-10/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-    <link rel="stylesheet" href="/goit-js-hw-10/assets/styles-fcbb598c.css">
+    <script type="module" crossorigin src="/goit-js-hw-10/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-8c59ed88.js">
+    <link rel="stylesheet" href="/goit-js-hw-10/assets/vendor-1cd1f9d9.css">
+    <link rel="stylesheet" href="/goit-js-hw-10/assets/index-f1e8732d.css">
   </head>
   <body>
-
-   <ul>
-    <li><a href="./1-timer.html">Timer</a></li>
-    <li><a href="./2-snackbar.html">Snackbar</a></li>
-   </ul>
-
+    <div class="container">
+      <form action="submit" class="input-form">
+        <input type="search" id="site-search" name="q" placeholder="Search images..."/>
+        
+        <button class="button" type="submit">Search</button>
+      </form>
+      
+    </div>
+    <div class="loader-container is-hidden">
+      <div class="loader"></div>
+    </div>
+    <div class="gallery-container">
+      <ul class="gallery"></ul>
+    </div>
+    
+    
     
   </body>
 </html>
+
+
+
+ 
