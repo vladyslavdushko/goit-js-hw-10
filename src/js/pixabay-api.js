@@ -23,21 +23,6 @@ export default async function getPicture(query) {
       }
       return res.json();
     })
-    .then(res => {
-      if (res.total === 0) {
-        iziToast.error({
-          title: 'Error',
-          message: `Sorry, there are no images matching your search query. Please try again!`
-        });
-        return null;
-      }
-      return res;
-    })
-    .catch(error => {
-      iziToast.error({
-        title: 'Error',
-        message: error.message,
-      });
-      return null;
-    });
+
+    
 }
