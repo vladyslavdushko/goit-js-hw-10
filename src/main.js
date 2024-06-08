@@ -38,13 +38,16 @@ searchBtn.addEventListener('click', (event) => {
     console.log(res);
     renderGallery(res)
 
-    loader.classList.remove("is-visible");
-    loader.classList.add("is-hidden");
+
   })
   .catch(err => {
 
     throw new Error(err)
-  })
+  }).finally( res => 
+    
+{loader.classList.remove("is-visible");
+loader.classList.add("is-hidden");}
+  )
 
 
 

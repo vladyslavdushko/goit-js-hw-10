@@ -38,9 +38,9 @@ export function renderGallery(res) {
                 </a> 
                 </li>`
             ).join('');
-            lightbox.refresh()
 
            gallery.insertAdjacentHTML("beforeend", markup);
+           lightbox.refresh()
 
 }
   
