@@ -11,21 +11,22 @@ import "izitoast/dist/css/iziToast.min.css";
 
 const searchBtn = document.querySelector('button');
 const form = document.querySelector('form');
-const gallery = document.querySelector('.gallery')
+const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader-container')
 
-let lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250});
 
 
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault();
+  gallery.innerHTML = '';
 
   const query = form.elements.q.value.trim();
 
   if(query === ''){
     return alert("Enter text")
    }
-
+   loader.classList.add("is-visible");
+   loader.classList.remove("is-hidden");
    getPicture(query)
   .then(res => {
     if (res.total === 0) {
@@ -36,9 +37,12 @@ searchBtn.addEventListener('click', (event) => {
     }
     console.log(res);
     renderGallery(res)
-    lightbox.refresh()
+
+    loader.classList.remove("is-visible");
+    loader.classList.add("is-hidden");
   })
   .catch(err => {
+
     throw new Error(err)
   })
 

@@ -3,18 +3,10 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+let lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250});
 const gallery = document.querySelector('.gallery');
-const loader = document.querySelector('.loader-container')
 
-export function renderGallery(res) {
-    
-
-    loader.classList.add("is-visible");
-    loader.classList.remove("is-hidden");
-    gallery.innerHTML = '';
-
-    
-        
+export function renderGallery(res) {        
             let markup = res.hits.map( (image) => 
                 `
                 <li class='gallery-item'>
@@ -46,10 +38,10 @@ export function renderGallery(res) {
                 </a> 
                 </li>`
             ).join('');
-            
+            lightbox.refresh()
+
            gallery.insertAdjacentHTML("beforeend", markup);
-        loader.classList.remove("is-visible");
-        loader.classList.add("is-hidden");
+
 }
   
   
