@@ -4,7 +4,7 @@ import "izitoast/dist/css/iziToast.min.css";
 const PIXABAY_API_KEY = '44111421-e553a4c4acf6f519f7af5aa9e';
 const PIXABAY_API_URL = "https://pixabay.com/api/";
 
-export default async function getPicture(query) {
+export default function getPicture(query) {
   const options = {
     origin: PIXABAY_API_URL,
     key: PIXABAY_API_KEY,
